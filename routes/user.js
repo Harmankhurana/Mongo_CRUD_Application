@@ -1,8 +1,10 @@
 import Router from 'express';
+import jwt from 'jsonwebtoken';
 const userRouter = Router();
 import { z } from 'zod';
 import bcrypt from 'bcrypt';
 import { userModel } from '../database/db';
+import { JWT_SECRET } from '../config';
 
 const saltRounds = 10;
 
@@ -40,15 +42,40 @@ userRouter.post('/signup', async function(req, res){
             message: "Something went wrong while signing up"
         })
     };
-    
+
     res.json({
         message: "You're signed up",
     });
 
 });
 
-userRouter.post('/signin', function(req, res){
+userRouter.post('/signin', async function(req, res){
+    const { email, password } = req.body;
 
+    const response = await userModel.findOne({
+        email: email,
+    });
+
+    if(!response){
+        res.json({
+            message: "User does not exist in our DB!"
+        })
+    };
+
+    const passwordMatch = bcrypt.compare(password, hashedPassword);
+
+    if(passwordMatch){
+        const token = jwt.sign({
+            id: response._id.toString(),
+        }, JWT_SECRET);
+        res.json({
+            token: token,
+        });
+    } else {
+        res.json({
+            message: "Incorrect credentials"
+        })
+    }
 });
 
 export {
