@@ -35,6 +35,7 @@ This backend server:
 ---
 
 ## 📂 Project Structure
+```bash
 Mongo_CRUD_Application/
 │
 ├── routes/
@@ -49,7 +50,7 @@ Mongo_CRUD_Application/
 ├── index.js
 ├── package.json
 └── .env
-
+```
 
 ---
 
