@@ -35,3 +35,58 @@ This backend server:
 ---
 
 ## 📂 Project Structure
+Mongo_CRUD_Application/
+│
+├── routes/
+│ └── user.js
+│
+├── database/
+│ └── db.js
+│
+├── middleware/
+│ └── auth.middleware.js
+│
+├── index.js
+├── package.json
+└── .env
+
+
+---
+
+## 🔐 Features
+
+### 1️⃣ User Signup
+
+- Validates input using Zod
+- Hashes password using bcrypt
+- Stores user in MongoDB
+
+### 2️⃣ User Signin
+
+- Checks if user exists
+- Compares hashed passwords
+- Generates JWT token upon successful login
+
+---
+
+
+## ▶️ Running the Project
+- Install dependencies
+```bash
+    npm install
+```
+- Start server
+```bash
+    npm run dev
+```
+
+---
+
+## ⭐ Future Improvements
+
+- Email format validation
+- Strong password rules
+- Role-based authentication
+- Refresh tokens
+- Error handling middleware
+- Production-level logging
