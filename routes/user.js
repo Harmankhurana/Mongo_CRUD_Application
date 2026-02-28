@@ -23,24 +23,27 @@ userRouter.post('/signup', async function(req, res){
         })
     };
 
-
-
     const { firstName, lastName, email, password } = req.body;
 
+    try {
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        console.log(hashedPassword)
 
-    const hashedPassword = bcrypt.hash(password, saltRounds);
-    console.log(hashedPassword)
-
-    await userModel.create({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: hashedPassword
-    });
-
+        await userModel.create({
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: hashedPassword
+        });
+    } catch (e) {
+        res.json({
+            message: "Something went wrong while signing up"
+        })
+    };
+    
     res.json({
         message: "You're signed up",
-    })
+    });
 
 });
 
