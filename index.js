@@ -10,7 +10,6 @@ const MONGO_URL = process.env.MONGO_URL;
 app.use(express.json());
 
 app.use('/api/v1/user', userRouter);
-// app.use('/api/v1/todo', todoRouter);
 
 async function main() {
     await mongoose.connect(MONGO_URL);
