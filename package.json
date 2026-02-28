@@ -18,5 +18,13 @@
     "url": "https://github.com/Harmankhurana/Mongo_CRUD_Application/issues"
   },
   "homepage": "https://github.com/Harmankhurana/Mongo_CRUD_Application#readme",
-  "description": "Backend of a Mongo CRUD Application"
+  "description": "Backend of a Mongo CRUD Application",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.2.3",
+    "nodemon": "^3.1.14",
+    "zod": "^4.3.6"
+  }
 }
