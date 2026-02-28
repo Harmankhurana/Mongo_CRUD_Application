@@ -72,11 +72,13 @@ userRouter.post('/signin', async function(req, res){
         res.json({
             token: token,
         });
+        console.log(token);
     } else {
         res.json({
             message: "Incorrect credentials"
         })
     }
+    
 });
 
 export {
