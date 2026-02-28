@@ -1,0 +1,22 @@
+{
+  "name": "mongo_crud_application",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harmankhurana/Mongo_CRUD_Application.git"
+  },
+  "keywords": [],
+  "author": "Harman Singh Khurana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Harmankhurana/Mongo_CRUD_Application/issues"
+  },
+  "homepage": "https://github.com/Harmankhurana/Mongo_CRUD_Application#readme",
+  "description": "Backend of a Mongo CRUD Application"
+}
