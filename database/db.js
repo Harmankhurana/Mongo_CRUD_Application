@@ -1,25 +1,15 @@
 import mongoose from "mongoose";
-import { string } from "zod";
 
-const { schema } = mongoose;
+const { Schema } = mongoose;
 
-const userSchema = new schema({
-    firstName: {
-        required: true,
-        type: string,
-    },
-    lastName: {
-        required: true,
-        type: string,
-    },
+const userSchema = new Schema({
+    firstName: String,
+    lastName: String,    
     email: {
+        type: String,
         required: true,
-        type: string,
     },
-    password: {
-        required: true,
-        type: string,
-    },
+    password: String,
 });
 
 const userModel = mongoose.model('user', userSchema);

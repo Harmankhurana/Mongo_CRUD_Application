@@ -3,8 +3,8 @@ import jwt from 'jsonwebtoken';
 const userRouter = Router();
 import { z } from 'zod';
 import bcrypt from 'bcrypt';
-import { userModel } from '../database/db';
-import { JWT_SECRET } from '../config';
+import { userModel } from '../database/db.js';
+import { JWT_SECRET } from '../config.js';
 
 const saltRounds = 10;
 
@@ -23,6 +23,7 @@ userRouter.post('/signup', async function(req, res){
             message: "Incorrect format used",
             error: parsedDataWithSuccess,
         })
+        return;
     };
 
     const { firstName, lastName, email, password } = req.body;
@@ -37,16 +38,16 @@ userRouter.post('/signup', async function(req, res){
             email: email,
             password: hashedPassword
         });
+        res.json({
+            message: "You're signed up",
+        });
+
     } catch (e) {
+        console.log(e);
         res.json({
             message: "Something went wrong while signing up"
         })
     };
-
-    res.json({
-        message: "You're signed up",
-    });
-
 });
 
 userRouter.post('/signin', async function(req, res){
@@ -62,7 +63,7 @@ userRouter.post('/signin', async function(req, res){
         })
     };
 
-    const passwordMatch = bcrypt.compare(password, hashedPassword);
+    const passwordMatch = bcrypt.compare(password, response.password);
 
     if(passwordMatch){
         const token = jwt.sign({
